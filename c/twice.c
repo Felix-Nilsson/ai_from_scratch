@@ -10,10 +10,10 @@ i.e. our training set is x * w = y, and the true w = 2
 
 float train[][2] = {
   {0,0},
-  {1,2},
-  {2,4},
-  {3,6},
-  {4,8}
+  {1,3},
+  {2,6},
+  {3,9},
+  {4,12}
 
 };
 
@@ -50,9 +50,8 @@ int main(){
   float rate = 1e-3;
   float eps = 1e-3;
 
-  
-
-  for(size_t i = 0; i < 500; ++i){
+  for(size_t i = 0; i < 5000; ++i){
+    
     float c = cost(w,b);
 
     float dw = (cost(w + eps, b) - c)/eps;
