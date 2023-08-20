@@ -6,8 +6,8 @@ with open("data.txt", "r") as file:
 #x = range(1, len(data) + 1)  # Generating x-values
 
 plt.plot(data ) # Creating the plot with markers
-plt.xlabel("Index")
-plt.ylabel("Value")
-plt.title("Decreasing Numbers Plot")
+plt.xlabel("Iteration")
+plt.ylabel("Loss")
+plt.title("Loss over time")
 
 plt.savefig("img/fig.png")

@@ -5,15 +5,34 @@
 
 // timestamp 59:45
 
+typedef float sample[3];
+
+
 //OR Gate
-float train[][3] = {
+sample or_train[] = {
     {0,0,0},
     {0,1,1},
     {1,0,1},
     {1,1,1}
 };
 
-#define train_count (sizeof(train)/sizeof(train[0]))
+sample and_train[] = {
+    {0,0,0},
+    {0,1,0},
+    {1,0,0},
+    {1,1,1}
+};
+
+sample nand_train[] = {
+    {0,0,1},
+    {0,1,1},
+    {1,0,1},
+    {1,1,0}
+};
+
+sample *train = nand_train;
+size_t train_count = 4;
+//#define train_count (sizeof(train)/sizeof(train[0]))
 
 float sigmoidf(float x){
     return 1.f / (1.f + expf(-x));
@@ -61,12 +80,12 @@ int main(){
         w1 -= rate*dw1;
         w2 -= rate*dw2;
         b  -= rate*db;
-        printf("%f\n",c);
+        //printf("%f\n",c);
     }
     float c = cost(w1,w2, b);
     
 
-    /*
+    
     printf("w1=%f, w2=%f, b=%f, c=%f \n",w1,w2,b,c);
 
     for(size_t i = 0; i < 2; i++){
@@ -74,6 +93,6 @@ int main(){
             printf("%zu | %zu = %f\n", i, j, sigmoidf(i*w1 + j*w2 + b));
         }
     }
-    */
+    
     return 0;
 }
